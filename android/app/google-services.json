@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1001844420597",
+    "project_id": "instagram-3838b",
+    "storage_bucket": "instagram-3838b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1001844420597:android:065decedb125f1f4a6babc",
+        "android_client_info": {
+          "package_name": "co.yashanki.insta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1001844420597-rqdqf2pmj02ape018etmmcse1lcmrm24.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZILY6wVj2BBUB4uIUay3WkWkqrTK5v3Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1001844420597-rqdqf2pmj02ape018etmmcse1lcmrm24.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
