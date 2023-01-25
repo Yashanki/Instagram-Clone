@@ -1,10 +1,10 @@
 import 'dart:typed_data';
 
-import 'package:firebase_auth/firebase_auth.dart' as model;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:instagram/models/user.dart';
 import 'package:instagram/providers/user_provider.dart';
+import 'package:instagram/resources/firestore_methods.dart';
 import 'package:instagram/utilities/colors.dart';
 import 'package:instagram/utilities/utils.dart';
 import 'package:provider/provider.dart';
@@ -18,7 +18,25 @@ class AddPostScreen extends StatefulWidget {
 
 class _AddPostScreenState extends State<AddPostScreen> {
   Uint8List? _file;
-  final TextEditingController _descriptionController = TextEditingController(  );
+  final TextEditingController _descriptionController = TextEditingController();
+
+  void postImage(
+    String uid,
+    String username,
+    String profImage,
+  ) async {
+    try {
+      String res = await FirestoreMethods().uploadPost(
+          username, _descriptionController.text, _file!, uid, profImage);
+      if (res == "success") {
+        showSnackBar('Posted!', context);
+      } else {
+        showSnackBar(res, context);
+      }
+    } catch (e) {
+      showSnackBar(e.toString(), context);
+    }
+  }
 
   _selectImage(BuildContext context) async {
     return showDialog(
@@ -63,6 +81,13 @@ class _AddPostScreenState extends State<AddPostScreen> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _descriptionController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final User user = Provider.of<UserProvider>(context).getUser as User;
 
@@ -84,7 +109,8 @@ class _AddPostScreenState extends State<AddPostScreen> {
               centerTitle: false,
               actions: [
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () =>
+                      postImage(user.uid, user.username, user.photoUrl),
                   child: Text(
                     'Post',
                     style: TextStyle(
@@ -126,9 +152,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                         child: Container(
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                              image: MemoryImage(
-                                _file!
-                              ),
+                              image: MemoryImage(_file!),
                               fit: BoxFit.fill,
                               alignment: FractionalOffset.topCenter,
                             ),
