@@ -36,8 +36,8 @@ class _AddPostScreenState extends State<AddPostScreen> {
         setState(() {
           _isLoading = false;
         });
-        clearImage();
         showSnackBar('Posted!', context);
+        clearImage();
       } else {
         setState(() {
           _isLoading = false;
@@ -49,7 +49,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
     }
   }
 
-  _selectImage(BuildContext context) async {
+   _selectImage(BuildContext context) async {
     return showDialog(
       context: context,
       builder: (context) {
@@ -120,7 +120,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
               backgroundColor: mobileBackgroundColor,
               leading: IconButton(
                 icon: Icon(Icons.arrow_back),
-                onPressed: () {},
+                onPressed: clearImage,
               ),
               title: const Text('Post To'),
               centerTitle: false,
