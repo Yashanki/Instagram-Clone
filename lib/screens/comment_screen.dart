@@ -40,7 +40,7 @@ class _CommentScreenState extends State<CommentScreen> {
         stream: FirebaseFirestore.instance
             .collection('posts')
             .doc(widget.snap['postId'])
-            .collection('comments')
+            .collection('comments').orderBy('datePublished', descending: false)
             .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
