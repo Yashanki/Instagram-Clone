@@ -199,7 +199,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    child: Text("Don't have an account?"),
+                    child: Text("Have an account?  "),
                     padding: EdgeInsets.symmetric(vertical: 8),
                   ),
                   GestureDetector(

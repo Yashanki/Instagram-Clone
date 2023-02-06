@@ -139,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    child: Text("Don't have an account?"),
+                    child: Text("Don't have an account?  "),
                     padding: EdgeInsets.symmetric(vertical: 8),
                   ),
                   GestureDetector(
